@@ -1,0 +1,17 @@
+{
+  "extends": "../base.tsconfig.json",
+  "compilerOptions": {
+    "typeRoots": ["../node_modules/@types"],
+
+    "noEmit": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "checkJs": false,
+    "allowJs": false
+  },
+  "references": [
+    {
+      "path": "../src"
+    }
+  ]
+}

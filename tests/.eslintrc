@@ -1,0 +1,76 @@
+{
+  "extends": ["../.eslintrc"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "rules": {
+    "id-length": [
+      "error",
+      {
+        "exceptions": ["I", "i", "j", "_"]
+      }
+    ],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "describe",
+        "property": "only"
+      },
+      {
+        "object": "it",
+        "property": "only"
+      },
+      {
+        "object": "Scenario",
+        "property": "only"
+      },
+      {
+        "object": "Feature",
+        "property": "only"
+      },
+      {
+        "object": "chai",
+        "property": "expect"
+      },
+      {
+        "object": "chai",
+        "property": "should"
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "chai",
+            "importNames": ["expect", "should"],
+            "message": "Importing 'expect' and 'should' is restricted from being used."
+          }
+        ]
+      }
+    ],
+    "no-console": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "no-unused-vars": ["off"],
+        "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }]
+      }
+    }
+  ]
+}
