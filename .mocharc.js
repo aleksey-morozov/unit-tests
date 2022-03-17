@@ -1,8 +1,6 @@
 'use strict';
 const path = require('path');
 
-process.env.TS_NODE_PROJECT = require.resolve('./tests/tsconfig.json');
-
 const hasGrep = process.argv.some(arg => arg === '--grep');
 
 const config = {
