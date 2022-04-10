@@ -28,6 +28,6 @@ export class SquareRootService {
   }
 
   private static isNumber(value: any) {
-    return !isNaN(value);
+    return !isNaN(value) && Number.isFinite(value);
   }
 }

@@ -18,23 +18,37 @@ describe('SquareRootService', () => {
   });
 
   it('Value "a" can`t be 0', () => {
-    const call = () => squareRootService.solve(0, 0, -1);
+    const call = () => squareRootService.solve(-Number.EPSILON, 0, -1);
 
     assert.throws(call, 'Must throw error');
   });
 
   it('Value "a" must be number', () => {
     // @ts-ignore
-    const call = () => squareRootService.solve('string', 0, -1);
+    const callString = () => squareRootService.solve('string', 0, -1);
+    assert.throws(callString, 'Can`t be string');
 
-    assert.throws(call, 'Must be number');
+    // @ts-ignore
+    const callNaN = () => squareRootService.solve(NaN, 0, -1);
+    assert.throws(callNaN, 'Can`t be NaN');
+
+    // @ts-ignore
+    const callInfinity = () => squareRootService.solve(Infinity, 0, -1);
+    assert.throws(callInfinity, 'Can`t be Infinity');
   });
 
   it('Value "b" must be number', () => {
     // @ts-ignore
-    const call = () => squareRootService.solve(0, 'string', -1);
+    const callString = () => squareRootService.solve(0, 'string', -1);
+    assert.throws(callString, 'Can`t be string');
 
-    assert.throws(call, 'Must be number');
+    // @ts-ignore
+    const callNaN = () => squareRootService.solve(0, NaN, -1);
+    assert.throws(callNaN, 'Can`t be NaN');
+
+    // @ts-ignore
+    const callInfinity = () => squareRootService.solve(0, Infinity, -1);
+    assert.throws(callInfinity, 'Can`t be Infinity');
   });
 
   it('Value "c" must be number', () => {
